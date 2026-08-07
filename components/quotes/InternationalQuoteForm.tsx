@@ -66,7 +66,7 @@ export default function InternationalQuoteForm() {
         throw new Error();
       }
 
-      alert("Solicitud enviada correctamente.");
+      alert("Cotización Recibida, Estamos buscando descuentos y tarifas especiales con las transportadoras y en unos minutos te enviaremos las promociones por whatsapp.");
 
       setForm(initialForm);
 

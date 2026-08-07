@@ -48,7 +48,7 @@ export default function Hero() {
             </Link>
 
             <a
-              href="https://wa.me/TUNUMERO"
+              href="https://wa.me/3213518287"
               className="rounded-2xl border border-white px-8 py-4 text-lg font-semibold text-white transition hover:bg-white hover:text-blue-700"
             >
               💬 Hablar por WhatsApp

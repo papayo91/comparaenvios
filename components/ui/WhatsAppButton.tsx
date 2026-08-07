@@ -3,30 +3,12 @@
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/573213518287?text=Hola,%20quiero%20cotizar%20un%20envío%20con%20Compara%20Envíos."
+      href="https://wa.me/573213518287"
       target="_blank"
       rel="noopener noreferrer"
-      className="
-        fixed
-        bottom-6
-        right-6
-        z-50
-        flex
-        items-center
-        gap-3
-        rounded-full
-        bg-green-500
-        px-5
-        py-4
-        text-white
-        shadow-2xl
-        transition-all
-        duration-300
-        hover:scale-105
-        hover:bg-green-600
-      "
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-green-500 px-5 py-4 text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-green-600"
     >
-      <span className="text-3xl">💬</span>
+      <span className="text-2xl">💬</span>
 
       <div className="hidden sm:block">
         <p className="text-sm leading-none">

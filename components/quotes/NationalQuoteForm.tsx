@@ -63,7 +63,7 @@ export default function NationalQuoteForm() {
         throw new Error();
       }
 
-      alert("Solicitud enviada correctamente.");
+      alert("Cotización Recibida, Estamos buscando descuentos y tarifas especiales con las transportadoras y en unos minutos te enviaremos las promociones por whatsapp.");
 
       setForm(initialForm);
 
@@ -332,7 +332,7 @@ export default function NationalQuoteForm() {
         >
           {loading
             ? "Enviando solicitud..."
-            : "Solicitar cotización"}
+            : "Buscar Tarifas Especiales"}
         </button>
 
       </form>
