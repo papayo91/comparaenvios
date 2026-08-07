@@ -154,7 +154,7 @@ export default function LocalQuoteForm() {
 
       if (!res.ok) throw new Error();
 
-      alert("Solicitud enviada correctamente.");
+      alert("¡Solicitud recibida! En unos minutos un asesor se comunicará contigo por WhatsApp para confirmar tu servicio.");
 
       setForm(initialForm);
 

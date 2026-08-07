@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import GoogleMapsProvider from "@/components/maps/GoogleMapsProvider";
+
 export const metadata: Metadata = {
-  title: "Compara Envíos | Cotiza envíos nacionales, internacionales y mensajería local",
+  title:
+    "Compara Envíos | Cotiza envíos nacionales, internacionales y mensajería local",
   description:
     "Compara tarifas entre las principales transportadoras de Colombia. Cotiza envíos nacionales, internacionales y mensajería local desde un solo lugar.",
-
   keywords: [
     "envíos",
     "cotizar envíos",
@@ -21,11 +23,8 @@ export const metadata: Metadata = {
     "Bucaramanga",
     "Compara Envíos",
   ],
-
   authors: [{ name: "Compara Envíos" }],
-
   creator: "Compara Envíos",
-
   openGraph: {
     title: "Compara Envíos",
     description:
@@ -35,7 +34,6 @@ export const metadata: Metadata = {
     locale: "es_CO",
     type: "website",
   },
-
   robots: {
     index: true,
     follow: true,
@@ -49,7 +47,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <GoogleMapsProvider>
+          {children}
+        </GoogleMapsProvider>
+      </body>
     </html>
   );
 }
