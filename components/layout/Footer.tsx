@@ -96,12 +96,7 @@ export default function Footer() {
                 📱 WhatsApp
               </a>
 
-              <a
-                href="mailto:contacto@comparaenvios.co"
-                className="block hover:text-white transition"
-              >
-                📧 contacto@comparaenvios.co
-              </a>
+            
 
               <p>📍 Bucaramanga, Colombia</p>
 

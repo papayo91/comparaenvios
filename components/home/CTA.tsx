@@ -3,9 +3,8 @@ import Container from "@/components/layout/Container";
 
 export default function CTA() {
   return (
-    <section className="bg-gradient-to-r from-blue-700 via-blue-600 to-green-600 py-24 text-white">
+    <section>
       <Container>
-
         <div className="mx-auto max-w-4xl text-center">
 
           <span className="rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur">
@@ -30,17 +29,18 @@ export default function CTA() {
               Cotizar ahora
             </Link>
 
-            <Link
-              href="/contacto"
+            <a
+              href="https://wa.me/573213518287"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-xl border border-white px-8 py-4 text-lg font-semibold transition hover:bg-white hover:text-blue-700"
             >
               Hablar con un asesor
-            </Link>
+            </a>
 
           </div>
 
         </div>
-
       </Container>
     </section>
   );
