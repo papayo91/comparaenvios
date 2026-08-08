@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import GoogleMapsProvider from "@/components/maps/GoogleMapsProvider";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export const metadata: Metadata = {
   title:
     "Compara Envíos | Cotiza envíos nacionales, internacionales y mensajería local",
+
   description:
     "Compara tarifas entre las principales transportadoras de Colombia. Cotiza envíos nacionales, internacionales y mensajería local desde un solo lugar.",
+
   keywords: [
     "envíos",
     "cotizar envíos",
@@ -23,17 +26,25 @@ export const metadata: Metadata = {
     "Bucaramanga",
     "Compara Envíos",
   ],
+
   authors: [{ name: "Compara Envíos" }],
   creator: "Compara Envíos",
+
   openGraph: {
     title: "Compara Envíos",
+
     description:
       "Encuentra la mejor tarifa para tus envíos nacionales, internacionales y mensajería local.",
+
     url: "https://comparaenvios.co",
+
     siteName: "Compara Envíos",
+
     locale: "es_CO",
+
     type: "website",
   },
+
   robots: {
     index: true,
     follow: true,
@@ -50,6 +61,8 @@ export default function RootLayout({
       <body>
         <GoogleMapsProvider>
           {children}
+
+          <WhatsAppButton />
         </GoogleMapsProvider>
       </body>
     </html>
