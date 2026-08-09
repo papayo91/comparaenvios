@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
-
 import GoogleMapsProvider from "@/components/maps/GoogleMapsProvider";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export const metadata: Metadata = {
   title:
@@ -32,16 +31,11 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Compara Envíos",
-
     description:
       "Encuentra la mejor tarifa para tus envíos nacionales, internacionales y mensajería local.",
-
     url: "https://comparaenvios.co",
-
     siteName: "Compara Envíos",
-
     locale: "es_CO",
-
     type: "website",
   },
 
@@ -61,9 +55,22 @@ export default function RootLayout({
       <body>
         <GoogleMapsProvider>
           {children}
-
-          <WhatsAppButton />
         </GoogleMapsProvider>
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-OG9BFQFWK6"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-OG9BFQFWK6');
+          `}
+        </Script>
       </body>
     </html>
   );
