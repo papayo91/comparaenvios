@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+
 import GoogleMapsProvider from "@/components/maps/GoogleMapsProvider";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export const metadata: Metadata = {
   title:
@@ -57,6 +59,9 @@ export default function RootLayout({
           {children}
         </GoogleMapsProvider>
 
+        {/* Botón flotante de WhatsApp */}
+        <WhatsAppButton />
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-OG9BFQFWK6"
@@ -66,7 +71,11 @@ export default function RootLayout({
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
+
+            function gtag() {
+              window.dataLayer.push(arguments);
+            }
+
             gtag('js', new Date());
             gtag('config', 'G-OG9BFQFWK6');
           `}
