@@ -8,7 +8,7 @@ export function calculateLocalPrice(km: number): number {
   }
 
   if (km <= 12) {
-    return Math.round(km * 1300);
+    return Math.round(km * 1350);
   }
 
   return Math.round(18000 + (km - 12) * 1100);
