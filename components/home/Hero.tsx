@@ -33,14 +33,7 @@ export default function Hero() {
 
             <div className="mt-10 flex flex-wrap gap-4">
 
-              <Link href="/cotizar/nacional">
-                <Button
-                  variant="success"
-                  size="lg"
-                >
-                  Descubrir mi ahorro
-                </Button>
-              </Link>
+            
 
               <Link href="#servicios">
                 <Button
