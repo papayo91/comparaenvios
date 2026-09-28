@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    // Guardar en Supabase
+    // Guardar la solicitud en Supabase
     const { error } = await supabase.from("local_quotes").insert([
       {
         nombre: body.nombre,
@@ -26,45 +26,111 @@ export async function POST(request: Request) {
     ]);
 
     if (error) {
+      console.error("Error guardando en Supabase:", error);
+
       return NextResponse.json(
         { error: error.message },
         { status: 500 }
       );
     }
 
+    // Formatear el valor cotizado como pesos colombianos
+    const valorFormateado = Number(
+      body.valor_cotizado || 0
+    ).toLocaleString("es-CO", {
+      style: "currency",
+      currency: "COP",
+      maximumFractionDigits: 0,
+    });
+
     // Enviar correo
-    await resend.emails.send({
+    const { error: emailError } = await resend.emails.send({
       from: "Compara Envíos <onboarding@resend.dev>",
       to: "oscarruedas1991@gmail.com",
-      subject: `🛵 Nueva solicitud de mensajería local`,
+      subject: "🛵 Nueva solicitud de mensajería local",
+
       html: `
         <h2>Nueva solicitud de mensajería local</h2>
 
-        <p><strong>Nombre:</strong> ${body.nombre}</p>
-        <p><strong>WhatsApp:</strong> ${body.whatsapp}</p>
-        <p><strong>Tipo de servicio:</strong> ${body.tipo_servicio}</p>
+        <p>
+          <strong>Nombre:</strong>
+          ${body.nombre}
+        </p>
+
+        <p>
+          <strong>WhatsApp:</strong>
+          ${body.whatsapp}
+        </p>
+
+        <p>
+          <strong>Tipo de servicio:</strong>
+          ${body.tipo_servicio}
+        </p>
 
         <hr>
 
-        <p><strong>Dirección de recogida:</strong></p>
-        <p>${body.direccion_recogida}</p>
+        <h3>Información de la cotización</h3>
 
-        <p><strong>Dirección de entrega:</strong></p>
-        <p>${body.direccion_entrega}</p>
+        <p>
+          <strong>Distancia:</strong>
+          ${body.distancia_km ?? "No disponible"} km
+        </p>
+
+        <p>
+          <strong>Tiempo estimado:</strong>
+          ${body.duracion_estimada_minutos ?? "No disponible"} minutos
+        </p>
+
+        <p>
+          <strong>Valor del servicio:</strong>
+          ${valorFormateado}
+        </p>
 
         <hr>
 
-        <p><strong>Observaciones:</strong></p>
-        <p>${body.observaciones || "Sin observaciones"}</p>
+        <p>
+          <strong>Dirección de recogida:</strong>
+        </p>
+
+        <p>
+          ${body.direccion_recogida}
+        </p>
+
+        <p>
+          <strong>Dirección de entrega:</strong>
+        </p>
+
+        <p>
+          ${body.direccion_entrega}
+        </p>
+
+        <hr>
+
+        <p>
+          <strong>Observaciones:</strong>
+        </p>
+
+        <p>
+          ${body.observaciones || "Sin observaciones"}
+        </p>
       `,
     });
+
+    if (emailError) {
+      console.error("Error enviando correo:", emailError);
+
+      return NextResponse.json(
+        { error: "La solicitud se guardó, pero no se pudo enviar el correo." },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
     });
 
   } catch (err) {
-    console.error(err);
+    console.error("Error interno:", err);
 
     return NextResponse.json(
       { error: "Error interno del servidor" },
