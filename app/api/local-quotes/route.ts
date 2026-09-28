@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     // Enviar correo
     const { error: emailError } = await resend.emails.send({
       from: "Compara Envíos <onboarding@resend.dev>",
-      to: ["oscarruedas1991@gmail.com", "racasamy@gmail.com"],
+      to: "oscarruedas1991@gmail.com",
 
       subject: "🛵 Nueva solicitud de mensajería local",
 
